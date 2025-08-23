@@ -1,0 +1,33 @@
+
+.home-footer {
+  background: #1e293b;
+  color: #fff;
+  padding: 32px 0 24px 0;
+  text-align: center;
+}
+.footer-logo-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+.footer-logo-title .logo {
+  width: 32px;
+  margin-right: 8px;
+}
+.footer-logo-title .title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #F7931E;
+}
+.footer-social {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+.footer-social img {
+  width: 28px;
+  height: 28px;
+  filter: brightness(0) invert(1);
+}
