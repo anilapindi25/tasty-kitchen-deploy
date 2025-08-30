@@ -12,16 +12,16 @@ export const CartProvider = ({ children }) => {
       )
     );
   };
-
   const onDecreaseQuantity = (id) => {
-    setCartList(prev =>
-      prev.map(item =>
-        item.id === id && item.quantity > 1
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
+  setCartList(prev =>
+    prev
+      .map(item =>
+        item.id === id ? { ...item, quantity: item.quantity - 1 } : item
       )
-    );
-  };
+      .filter(item => item.quantity > 0) 
+  );
+};
+
 
   const addToCart = (product) => {
     const itemExists = cartList.find(item => item.id === product.id);

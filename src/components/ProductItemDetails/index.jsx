@@ -15,8 +15,8 @@ const ProductItemDetails = () => {
   const {
     cartList,
     addToCart,
-    increaseQuantity,
-    decreaseQuantity,
+   onIncreaseQuantity,
+   onDecreaseQuantity,
   } = useContext(CartContext);
 
   useEffect(() => {
@@ -30,7 +30,6 @@ const ProductItemDetails = () => {
       };
       const response = await fetch(url, options);
       const data = await response.json();
-      // console.log(data)
       if (response.ok) {
         setRestraunt(data);
         setMenu(data.food_items);
@@ -81,9 +80,9 @@ const ProductItemDetails = () => {
 
                   {quantity > 0 ? (
                     <div className="qty-controls">
-                      <button className="qty-btn" onClick={() => decreaseQuantity(item.id)}>-</button>
+                      <button className="qty-btn" onClick={() => onDecreaseQuantity(item.id)}>-</button>
                       <span className="qty">{quantity}</span>
-                      <button className="qty-btn" onClick={() => increaseQuantity(item.id)}>+</button>
+                      <button className="qty-btn" onClick={() => onIncreaseQuantity(item.id)}>+</button>
                     </div>
                   ) : (
                     <button className="add-btn" onClick={() => addToCart(item)}>ADD</button>
