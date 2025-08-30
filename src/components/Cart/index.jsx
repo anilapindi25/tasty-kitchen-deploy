@@ -13,9 +13,7 @@ return (
   <div className="page-container">
     <Navbar />
     <div className="cart-main-content">
-      <div className="cart-container">
         {cartList.length === 0 ? <EmptyCartView /> : <CartListView />}
-      </div>
     </div>
     <Footer />
   </div>
