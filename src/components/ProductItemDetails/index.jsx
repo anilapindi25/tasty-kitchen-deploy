@@ -4,24 +4,27 @@ import Cookies from "js-cookie";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import CartContext from "../../context/CartContext";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import './index.css';
 
 const ProductItemDetails = () => {
-  const { restrauntId } = useParams(); // <-- use restrauntId
+  const { restrauntId } = useParams();
   const [restraunt, setRestraunt] = useState(null);
   const [menu, setMenu] = useState([]);
   const [error, setError] = useState('');
   const jwtToken = Cookies.get("jwt_token");
+
   const {
     cartList,
     addToCart,
-   onIncreaseQuantity,
-   onDecreaseQuantity,
+    onIncreaseQuantity,
+    onDecreaseQuantity,
   } = useContext(CartContext);
 
   useEffect(() => {
     const fetchRestaurant = async () => {
-      const url = `https://apis.ccbp.in/restaurants-list/${restrauntId}`; // <-- use restrauntId
+      const url = `https://apis.ccbp.in/restaurants-list/${restrauntId}`;
       const options = {
         headers: {
           Authorization: `Bearer ${jwtToken}`,
@@ -40,8 +43,7 @@ const ProductItemDetails = () => {
     fetchRestaurant();
   }, [restrauntId, jwtToken]);
 
-  // Get item quantity from cartList
-  const getQuantity = id => {
+  const getQuantity = (id) => {
     const item = cartList.find(i => i.id === id);
     return item ? item.quantity : 0;
   };
@@ -54,7 +56,12 @@ const ProductItemDetails = () => {
       <Navbar />
       <div className="restaurant-details-page">
         <div className="restaurant-header">
-          <img src={restraunt.image_url} alt={restraunt.name} className="restaurant-banner" />
+          <LazyLoadImage
+            src={restraunt.image_url}
+            alt={restraunt.name}
+            className="restaurant-banner"
+            effect="blur"
+          />
           <div className="restaurant-info">
             <h2>{restraunt.name}</h2>
             <p>{restraunt.cuisine}</p>
@@ -72,7 +79,12 @@ const ProductItemDetails = () => {
             const quantity = getQuantity(item.id);
             return (
               <div className="menu-card" key={item.id}>
-                <img src={item.image_url} alt={item.name} className="menu-img" />
+                <LazyLoadImage
+                  src={item.image_url}
+                  alt={item.name}
+                  className="menu-img"
+                  effect="blur"
+                />
                 <div className="menu-info">
                   <h4>{item.name}</h4>
                   <span>₹ {item.cost}</span>

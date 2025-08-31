@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import './index.css'; // make sure you're using the correct CSS file
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const ProductCard = ({ product, quantity, onAddToCart, onIncrease, onDecrease }) => {
   const navigate = useNavigate();
@@ -11,7 +13,12 @@ const ProductCard = ({ product, quantity, onAddToCart, onIncrease, onDecrease })
 
   return (
     <div className="product-card" onClick={handleCardClick} style={{ cursor: "pointer" }}>
-      <img src={product.image_url} alt={product.name} className="product-image" />
+      <LazyLoadImage
+  src={product.image_url}
+  alt={product.name}
+  className="product-image"
+  effect="blur"   // fade-in with blur effect
+/>
       <div className="product-info">
         <h3 className="product-name">{product.name}</h3>
         <p className="product-category">{product.cuisine}</p>

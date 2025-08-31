@@ -18,9 +18,9 @@ const EmptyCartView = () => {
   return (
     <div className="empty-cart-container">
       {isLoading ? (
-        <div className="loader-container">
+        // <div className="loader-container">
           <div className="loader"></div>
-        </div>
+        /* </div> */
       ) : (
         <>
           <img
