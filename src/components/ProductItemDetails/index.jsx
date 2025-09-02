@@ -49,7 +49,9 @@ const ProductItemDetails = () => {
   };
 
   if (error) return <p>{error}</p>;
-  if (!restraunt) return <p>Loading...</p>;
+  if (!restraunt) return <div className="loader-container">
+          <div className="loader"></div>
+        </div>;
 
   return (
     <div>
