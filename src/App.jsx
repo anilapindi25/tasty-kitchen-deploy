@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { lazy, Suspense } from 'react'
 import { CartProvider } from './context/CartContext'
